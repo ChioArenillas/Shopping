@@ -6,9 +6,9 @@ import ShoppingItem from "./ShoppingItem";
 describe("ShoppingItem", () => {
   const item = {
     id: 1,
-    name: "Leche",
+    name: "Milk",
     quantity: 2,
-    category: "Lácteos",
+    category: "Dairy",
     completed: false,
   };
 
@@ -17,8 +17,8 @@ describe("ShoppingItem", () => {
 
     render(<ShoppingItem item={item} onToggle={onToggle} />);
 
-    expect(screen.getByText("Leche")).toBeInTheDocument();
-    expect(screen.getByText("2 unidades · Lácteos")).toBeInTheDocument();
+    expect(screen.getByText("Milk")).toBeInTheDocument();
+    expect(screen.getByText("2 units · Dairy")).toBeInTheDocument();
   });
 
   it("calls onToggle when the checkbox is clicked", async () => {
@@ -33,4 +33,27 @@ describe("ShoppingItem", () => {
 
     expect(onToggle).toHaveBeenCalledWith(1);
   });
+  it('shows the product as completed when it is bought', () => {
+  const onToggle = jest.fn();
+
+  render(
+    <ShoppingItem
+      item={{
+        id: 1,
+        name: 'Milk',
+        quantity: 2,
+        category: 'Dairy',
+        completed: true,
+      }}
+      onToggle={onToggle}
+    />,
+  );
+
+  expect(screen.getByRole('checkbox')).toBeChecked();
+
+  expect(screen.getByText('Milk')).toHaveStyle({
+    textDecoration: 'line-through',
+  });
+});
+
 });

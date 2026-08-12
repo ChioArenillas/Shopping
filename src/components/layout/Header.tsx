@@ -5,16 +5,30 @@ import {
   Toolbar,
   Typography,
   IconButton,
+  Box,
 } from '@mui/material';
 
+import MenuIcon from '@mui/icons-material/Menu';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export default function Header() {
   return (
-    <AppBar position="fixed">
+    <AppBar
+      position="fixed"
+      sx={{
+        zIndex: (theme) => theme.zIndex.drawer + 1,
+      }}
+    >
       <Toolbar>
-        <ShoppingCartIcon sx={{ mr: 2 }} />
+        <IconButton
+          color="inherit"
+          edge="start"
+          sx={{ mr: 1 }}
+        >
+          <MenuIcon />
+        </IconButton>
+
 
         <Typography
           variant="h6"
@@ -24,9 +38,19 @@ export default function Header() {
           Shopping List
         </Typography>
 
-        <IconButton color="inherit">
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 1,
+          }}
+        >
           <AccountCircleIcon />
-        </IconButton>
+
+          <Typography variant="body1">
+            Chio
+          </Typography>
+        </Box>
       </Toolbar>
     </AppBar>
   );

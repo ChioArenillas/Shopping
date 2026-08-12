@@ -25,10 +25,12 @@ export default function Sidebar() {
         '& .MuiDrawer-paper': {
           width: drawerWidth,
           boxSizing: 'border-box',
+          top: '64px',
+          height: 'calc(100% - 64px)',
         },
       }}
     >
-      <List sx={{ mt: 8 }}>
+      <List>
         <ListItem disablePadding>
           <ListItemButton selected>
             <ListItemIcon>
@@ -45,7 +47,7 @@ export default function Sidebar() {
               <ShoppingCartIcon />
             </ListItemIcon>
 
-            <ListItemText primary="Mi lista" />
+            <ListItemText primary="My List" />
           </ListItemButton>
         </ListItem>
 
@@ -55,7 +57,7 @@ export default function Sidebar() {
               <CategoryIcon />
             </ListItemIcon>
 
-            <ListItemText primary="Categorías" />
+            <ListItemText primary="Categories" />
           </ListItemButton>
         </ListItem>
       </List>

@@ -2,26 +2,41 @@ import Box from '@mui/material/Box';
 
 import SummaryCard from './SummaryCard';
 
-export default function SummaryCards() {
+interface SummaryCardsProps {
+  total: number;
+  completed: number;
+  pending: number;
+}
+
+export default function SummaryCards({
+  total,
+  completed,
+  pending,
+}: SummaryCardsProps) {
   return (
     <Box
       sx={{
         display: 'grid',
         gridTemplateColumns: {
           xs: '1fr',
-          sm: 'repeat(2, 1fr)',
+          sm: 'repeat(3, 1fr)',
         },
         gap: 2,
       }}
     >
       <SummaryCard
-        title="Productos"
-        value={12}
+        title="Products"
+        value={total}
       />
 
       <SummaryCard
-        title="Comprados"
-        value={5}
+        title="Bought"
+        value={completed}
+      />
+
+      <SummaryCard
+        title="Pending"
+        value={pending}
       />
     </Box>
   );
